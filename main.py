@@ -2,6 +2,7 @@ import uuid
 import time
 import random
 import sqlite3
+from colorama import Fore
 
 # conn = sqlite3.connect('calculon.db')
 
@@ -27,11 +28,11 @@ def generate_multiplication_problem():
     multiplier = random.randrange(factor_range[0], factor_range[1])
 
     if (multiplicand % 2 != 0) and (multiplier % 2 != 0):
-        print(f'Unsimplifiable problem ({multiplicand} x {multiplier}). Generating a better one')
+        print(f'Unsimplifiable problem ({multiplicand} x {multiplier}). Generating a better one.')
         return generate_multiplication_problem()
 
     product = multiplicand * multiplier
-    # difficulty = calculate_difficulty(product)
+    # difficulty = calculate_difficulty(product,mult)
     difficulty = 2
 
     return {
@@ -47,8 +48,21 @@ def generate_multiplication_problem():
             'silver': 60,
             'bronze': 90
         },
-        'challenge_id': str(uuid.uuid4())
+        'kata_id': str(uuid.uuid4())
     }
+
+
+def find_award(kata, time_taken):
+    kata_medals = kata['time_based_awards']
+
+    if time_taken <= kata_medals['gold']:
+        return 'Gold'
+    elif time_taken <= kata_medals['silver']:
+        return 'Silver'
+    elif time_taken <= kata_medals['bronze']:
+        return 'Bronze'
+    else:
+        return None
 
 
 def multiplication_handler(prev_attempted_kata = None):
@@ -65,8 +79,9 @@ def multiplication_handler(prev_attempted_kata = None):
 
     if int(user_answer) == product:
         print('That is correct. Well done.')
-        # handle_passed_kata(kata)
+        # handle_passed_kata(kata)—
         print(f'Time taken: {int(time_taken_on_kata)} seconds')
+        print(f'Medals: {find_award(kata, time_taken_on_kata)}')
         multiplication_handler()
 
     else:
@@ -79,7 +94,83 @@ handlers = {
 }
 
 def header():
-    print("""Welcome to the Dojo where true skills are forged and tested.""")
+    print('Math Dojo version 0.0.1')
+    print('Creator: FRTNX')
+    print('Contact: frtnx@protonmail.com')
+    print('\n\n')
+    print('                ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMM' + Fore.RESET + ' ################')
+    print('              ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMM' + Fore.RESET + ' ####################')
+    print('            ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMM' + Fore.RESET + ' #######################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMM' + Fore.RESET + ' ###########################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMM' + Fore.RESET + ' ############################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMM' + Fore.RESET + ' ##########     ##############')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMM' + Fore.RESET + ' ##########     ##############')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMM' + Fore.RESET + ' #############################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMM' + Fore.RESET + ' ############################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMM' + Fore.RESET + ' ###########################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMM' + Fore.RESET + ' #########################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ######################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ###################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' #################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ###############')
+    print('            ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ############')
+    print('              ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ##########')
+    print('                ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMM     MMMMMMMMM' + Fore.RESET + ' ########')
+    print('\n\n')
+    print("""Welcome to the Dojo where true skills are forged and tested.\n""")
+    return
+
+def generate_multiplication_problem():
+    factor_range = kata_levels[user_details['user_level']]['factor_range']
+
+    multiplicand = random.randrange(factor_range[0], factor_range[1]) # todo: read range from difficulty setting
+    multiplier = random.randrange(factor_range[0], factor_range[1])
+
+    if (multiplicand % 2 != 0) and (multiplier % 2 != 0):
+        print(f'Unsimplifiable problem ({multiplicand} x {multiplier}). Generating a better one.')
+        return generate_multiplication_problem()
+
+    product = multiplicand * multiplier
+    # difficulty = calculate_difficulty(product,mult)
+    difficulty = 2
+
+    return {
+        'factors': {
+            'multiplicand': multiplicand,
+            'multiplier': multiplier
+        },
+        'product': product,
+        'difficulty': difficulty,
+        'time_based_awards': {
+            'unit': 'seconds',
+            'gold': 30, # eventually calculate time based on difficulty
+            'silver': 60,
+            'bronze': 90
+        },
+        'kata_id': str(uuid.uuid4())
+    }
+
+def exit_banner():
+    print('\n\n')
+    print('                ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMM' + Fore.RESET + ' ################')
+    print('              ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMM' + Fore.RESET + ' ####################')
+    print('            ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMM' + Fore.RESET + ' #######################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMM' + Fore.RESET + ' ###########################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMM' + Fore.RESET + ' ############################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMM' + Fore.RESET + ' ##########     ##############')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMM' + Fore.RESET + ' ##########     ##############')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMM' + Fore.RESET + ' #############################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMM' + Fore.RESET + ' ############################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMM' + Fore.RESET + ' ###########################    MATH DOJO')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMM' + Fore.RESET + ' #########################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ######################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ###################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' #################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ################')
+    print('            ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ############')
+    print('              ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ##########')
+    print('                ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMM     MMMMMMMMM' + Fore.RESET + ' ########')
+    print('\n\n')
     return
 
 if __name__ == '__main__':
@@ -88,6 +179,7 @@ if __name__ == '__main__':
         # category = category_selection()
         category = 'multiplication'
         handlers[category]()
-    except Exception as e:
-        print(e)
+    except KeyboardInterrupt:
+        exit_banner()
+        
 
