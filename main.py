@@ -93,33 +93,6 @@ handlers = {
     'multiplication': multiplication_handler
 }
 
-def header():
-    print('Math Dojo version 0.0.1')
-    print('Creator: FRTNX')
-    print('Contact: frtnx@protonmail.com')
-    print('\n\n')
-    print('                ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMM' + Fore.RESET + ' ################')
-    print('              ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMM' + Fore.RESET + ' ####################')
-    print('            ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMM' + Fore.RESET + ' #######################')
-    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMM' + Fore.RESET + ' ###########################')
-    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMM' + Fore.RESET + ' ############################')
-    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMM' + Fore.RESET + ' ##########     ##############')
-    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMM' + Fore.RESET + ' ##########     ##############')
-    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMM' + Fore.RESET + ' #############################')
-    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMM' + Fore.RESET + ' ############################')
-    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMM' + Fore.RESET + ' ###########################')
-    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMM' + Fore.RESET + ' #########################')
-    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ######################')
-    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ###################')
-    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' #################')
-    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ###############')
-    print('            ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ############')
-    print('              ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ##########')
-    print('                ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMM     MMMMMMMMM' + Fore.RESET + ' ########')
-    print('\n\n')
-    print("""Welcome to the Dojo where true skills are forged and tested.\n""")
-    return
-
 def generate_multiplication_problem():
     factor_range = kata_levels[user_details['user_level']]['factor_range']
 
@@ -150,7 +123,10 @@ def generate_multiplication_problem():
         'kata_id': str(uuid.uuid4())
     }
 
-def exit_banner():
+def header():
+    print('Math Dojo version 0.0.1')
+    print('Creator: FRTNX')
+    print('Contact: frtnx@protonmail.com')
     print('\n\n')
     print('                ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMM' + Fore.RESET + ' ################')
     print('              ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMM' + Fore.RESET + ' ####################')
@@ -161,15 +137,40 @@ def exit_banner():
     print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMM' + Fore.RESET + ' ##########     ##############')
     print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMM' + Fore.RESET + ' #############################')
     print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMM' + Fore.RESET + ' ############################')
-    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMM' + Fore.RESET + ' ###########################    MATH DOJO')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMM' + Fore.RESET + ' ###########################')
     print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMM' + Fore.RESET + ' #########################')
     print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ######################')
     print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ###################')
     print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' #################')
-    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ################')
+    print('           ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ###############')
     print('            ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ############')
     print('              ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.RESET + ' ##########')
     print('                ' + Fore.LIGHTBLACK_EX + ' MMMMMMMMMM     MMMMMMMMM' + Fore.RESET + ' ########')
+    print('\n\n')
+    print("""Welcome to the Dojo where true skills are forged and tested.\n""")
+    return
+
+
+def exit_banner():
+    print('\n\n')
+    print('                 MMMMMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' ################' + Fore.RESET)
+    print('               MMMMMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' ####################' + Fore.RESET)
+    print('             MMMMMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' #######################' + Fore.RESET)
+    print('            MMMMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' ###########################' + Fore.RESET)
+    print('            MMMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' ############################' + Fore.RESET)
+    print('            MMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' ##########     ##############' + Fore.RESET)
+    print('            MMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' ##########     ##############' + Fore.RESET)
+    print('            MMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' #############################' + Fore.RESET)
+    print('            MMMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' ############################' + Fore.RESET)
+    print('            MMMMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' ###########################    MATH DOJO' + Fore.RESET)
+    print('            MMMMMMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' #########################' + Fore.RESET)
+    print('            MMMMMMMMMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' ######################' + Fore.RESET)
+    print('            MMMMMMMMMMMMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' ###################' + Fore.RESET)
+    print('            MMMMMMMMMMMMMMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' #################' + Fore.RESET)
+    print('            MMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' ################' + Fore.RESET)
+    print('             MMMMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' ############' + Fore.RESET)
+    print('               MMMMMMMMMMMMMMMMMMMMMMMMMM' + Fore.LIGHTBLACK_EX + ' ##########' + Fore.RESET)
+    print('                 MMMMMMMMMM     MMMMMMMMM' + Fore.LIGHTBLACK_EX + ' ########' + Fore.RESET)
     print('\n\n')
     return
 
